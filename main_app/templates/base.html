@@ -18,7 +18,8 @@
                 </ul>
                 <ul class="right">
                     <li><a href="{% url 'home' %}">About</a></li>
-                    <li><a href="{% url 'home' %}">All Tasks</a></li>
+                    <li><a href="{% url 'tasks_index' %}">All Tasks</a></li>
+                    <li><a href="{% url 'tasks_create' %}">Create Task</a></li>
                     {% if user.is_authenticated %}
                       <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
