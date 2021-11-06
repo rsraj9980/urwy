@@ -18,10 +18,12 @@
                 </ul>
                 <ul class="right">
                     <li><a href="{% url 'home' %}">About</a></li>
-                    <li><a href="{% url 'home' %}">All Tasks</a></li>
+                    <li><a href="{% url 'tasks_index' %}">All Tasks</a></li>
+                    <li><a href="{% url 'tasks_create' %}">Create Task</a></li>
                     {% if user.is_authenticated %}
                       <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
+                      <li><a href="{% url 'signup' %}">Sign Up</a></li>
                       <li><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
                   </ul>
@@ -32,7 +34,7 @@
         {% block content %} {% endblock %}
     </main>
     <footer class="page-footer">
-        <div class="right">All Rights Reserved, &copy; 2021 Cat Collector &nbsp;</div>
+        <div class="right">All Rights Reserved, &copy; 2021 UrWy &nbsp;</div>
     </footer>
 </body>
 
