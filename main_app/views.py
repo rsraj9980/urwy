@@ -15,8 +15,13 @@ def home(request):
 
 @login_required
 def tasks_index(request):
-  tasks = Task.objects.filter(user=request.user)
+  tasks = Task.objects.all()
   return render(request, 'tasks/index.html',{'tasks': tasks}) 
+
+@login_required
+def my_tasks(request):
+  tasks = Task.objects.filter(user=request.user)
+  return render(request, 'tasks/mytasks.html',{'tasks': tasks}) 
 
 @login_required
 def tasks_detail(request, task_id):

@@ -20,10 +20,11 @@
                     <li><a href="/" class="left brand-logo">&nbsp;&nbsp;UrWy</a></li>
                 </ul>
                 <ul class="right">
-                    <li><a href="{% url 'home' %}">About</a></li>
-                    <li><a href="{% url 'index' %}">My Tasks</a></li>
-                    <li><a href="{% url 'tasks_create' %}">Create Task</a></li>
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'home' %}">About</a></li>
+                    <li><a href="{% url 'index' %}">All Tasks</a></li>
+                    <li><a href="{% url 'my_tasks' %}">My Tasks</a></li>
+                    <li><a href="{% url 'tasks_create' %}">Create Task</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
