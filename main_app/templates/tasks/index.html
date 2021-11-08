@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h1>Task List</h1>
 
 {% for task in tasks %}
+<a href="{% url 'detail' task.id %}">
     <div class="card">
         <div class="card-content">
             <span class="card-title">{{ task.title }}</span>
@@ -13,6 +13,5 @@
             <p>Budget: {{ task.budget }}</p>
         </div>
     </div>
-{% endfor %}
-
-{% endblock %}
+</a>
+{% endfor %} {% endblock %}

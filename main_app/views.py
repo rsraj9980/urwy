@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Task
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -15,17 +15,32 @@ def home(request):
 
 @login_required
 def tasks_index(request):
-  return render(request, 'tasks/tasks_index.html') 
+  tasks = Task.objects.filter(user=request.user)
+  return render(request, 'tasks/index.html',{'tasks': tasks}) 
+
+@login_required
+def tasks_detail(request, task_id):
+  task = Task.objects.get(id=task_id)
+  return render(request,'tasks/detail.html',{
+    'task': task
+  })
 
 class TasksCreate(LoginRequiredMixin, CreateView):
   model = Task
   fields = ['title', 'desc', 'endDate', 'budget'] #ask instructors about to auto generate today's date
 
   def form_valid(self, form):
-    # form.instance is the in-memory new cat obj
     form.instance.user = self.request.user
     # Let tthe CreateView's form_valid method do its job
     return super().form_valid(form)
+
+class TasksUpdate(UpdateView,LoginRequiredMixin):
+  model = Task
+  fields = ['desc', 'endDate' ,'budget']
+
+class TasksDelete(DeleteView,LoginRequiredMixin):
+  model = Task
+  success_url = '/tasks/'
 
 def signup(request):
   error_message = ''
@@ -38,7 +53,7 @@ def signup(request):
       user = form.save()
       # This is how we log a user in via code
       login(request, user)
-      return redirect('tasks_index')
+      return redirect('index')
     else:
       error_message = 'Invalid sign up - try again'
   # A bad POST or a GET request, so render signup.html with an empty form
