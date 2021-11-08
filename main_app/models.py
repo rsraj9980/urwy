@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 
@@ -14,7 +15,7 @@ class Category(models.Model):
 class Task(models.Model):
     title = models.CharField(max_length=100)
     desc = models.CharField('Description', max_length=250)
-    createDate = models.DateField('Created Date') #should be provided by the browser no?
+    createDate = models.DateField('Created Date', default= timezone.now) #should be provided by the browser no?
     endDate = models.DateField('End Date')
     budget = models.IntegerField()
     categories = models.ManyToManyField(Category)
@@ -23,6 +24,9 @@ class Task(models.Model):
     
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'task_id': self.id})
 
 
 class Bid(models.Model):
