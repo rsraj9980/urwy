@@ -3,18 +3,29 @@ from django.views.generic.edit import CreateView
 from .models import Task
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import date
+
 
 # Create your views here.
 
 def home(request):
   return render(request, 'home.html')
 
+@login_required
 def tasks_index(request):
   return render(request, 'tasks/tasks_index.html') 
 
-class TasksCreate(CreateView):
+class TasksCreate(LoginRequiredMixin, CreateView):
   model = Task
-  fields = ['title', 'desc', 'endDate', 'createDate', 'bid', 'budget', 'category']
+  fields = ['title', 'desc', 'endDate', 'budget'] #ask instructors about to auto generate today's date
+
+  def form_valid(self, form):
+    # form.instance is the in-memory new cat obj
+    form.instance.user = self.request.user
+    # Let tthe CreateView's form_valid method do its job
+    return super().form_valid(form)
 
 def signup(request):
   error_message = ''
