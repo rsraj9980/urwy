@@ -8,14 +8,12 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-    
 
 class Task(models.Model):
     title = models.CharField(max_length=100)
     desc = models.CharField(max_length=250)
     endDate = models.DateField()
     createDate = models.DateField() #should be provided by the browser no?
-    bid = models.IntegerField()
     budget = models.IntegerField()
     category = models.ManyToManyField(Category)
     # add more properties here! :D 
@@ -23,4 +21,9 @@ class Task(models.Model):
     def __str__(self):
         return self.title
 
+class Bid(models.Model):
+    amount = models.IntegerField()
+    date = models.DateField()
 
+    def __str__(self):
+        return self.amount
