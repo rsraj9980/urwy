@@ -3,13 +3,15 @@
 <h1>Task List</h1>
 
 {% for task in tasks %}
-<div class="card">
-    <div class="card-content">
-        <span class="card-title">{{ task.title }}</span>
-        <p>Description: {{ task.desc }}</p>
-        <p>Created Date: {{ task.createDate }}</p>
-        <p>End Date: {{ task.endDate }}</p>
-        <p>Budget: ${{ task.budget }}</p>
+<a href="{% url 'bids_detail' task.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ task.title }}</span>
+            <p>Description: {{ task.desc }}</p>
+            <p>Created Date: {{ task.createDate }}</p>
+            <p>End Date: {{ task.endDate }}</p>
+            <p>Budget: ${{ task.budget }}</p>
+        </div>
     </div>
-</div>
+</a>
 {% endfor %} {% endblock %}

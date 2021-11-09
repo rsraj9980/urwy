@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Task
+from .models import Task, Bid
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from datetime import date
+from .forms import BiddingForm
 
 
 # Create your views here.
@@ -22,6 +22,16 @@ def tasks_index(request):
 def my_tasks(request):
   tasks = Task.objects.filter(user=request.user)
   return render(request, 'tasks/mytasks.html',{'tasks': tasks}) 
+
+@login_required
+def bids_detail(request, task_id):
+  task = Task.objects.get(id=task_id)
+  bidding_form = BiddingForm()
+  return render(request,'tasks/bid.html',{
+    'task': task,
+    'bidding_form': bidding_form,
+  })
+
 
 @login_required
 def tasks_detail(request, task_id):
@@ -46,6 +56,18 @@ class TasksUpdate(UpdateView,LoginRequiredMixin):
 class TasksDelete(DeleteView,LoginRequiredMixin):
   model = Task
   success_url = '/tasks/'
+
+
+@login_required
+def add_bid(request, task_id):
+  # create a ModelForm instance using the data in the posted form
+  form = BiddingForm(request.POST)
+  # validate the data
+  if form.is_valid():
+    new_bid = form.save(commit=False)
+    new_bid.task_id = task_id
+    new_bid.save()
+  return redirect('detail', task_id=task_id)
 
 def signup(request):
   error_message = ''

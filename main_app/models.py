@@ -31,7 +31,9 @@ class Task(models.Model):
 
 class Bid(models.Model):
     amount = models.IntegerField()
-    date = models.DateField()
+    date = models.DateField('Date', default= timezone.now)
+
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.amount
