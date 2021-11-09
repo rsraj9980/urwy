@@ -69,7 +69,7 @@ def add_bid(request, task_id):
     new_bid = form.save(commit=False)
     new_bid.task_id = task_id
     new_bid.save()
-  return redirect('detail', task_id=task_id)
+  return redirect('bids_detail', task_id=task_id)
 
 def signup(request):
   error_message = ''

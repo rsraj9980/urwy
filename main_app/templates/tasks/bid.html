@@ -13,6 +13,21 @@
                 <p>End Date: {{ task.endDate }}</p>
             </div>
         </div>
+        <div class="card">
+            <table class="striped">
+                <thead>
+                  <tr><th>Date</th><th>Amount</th></tr>
+                </thead>
+                <tbody>
+                  {% for bid in task.bid_set.all %}
+                    <tr>
+                      <td>{{bid.date}}</td>
+                      <td>${{bid.amount}}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
         <h2>Bids</h2>
         <div class="card">
             <form action="{% url 'add_bid' task.id %}" method="POST">

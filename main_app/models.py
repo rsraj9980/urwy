@@ -18,7 +18,7 @@ class Task(models.Model):
     createDate = models.DateField('Created Date', default= timezone.now) #should be provided by the browser no?
     endDate = models.DateField('End Date')
     budget = models.IntegerField()
-    categories = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category) 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     # add more properties here! :D 
     
