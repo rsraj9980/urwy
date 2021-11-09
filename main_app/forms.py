@@ -4,4 +4,4 @@ from .models import Bid
 class BiddingForm(ModelForm):
   class Meta:
     model = Bid
-    fields = ['date', 'amount']
+    fields = ['amount']

@@ -36,8 +36,10 @@ def bids_detail(request, task_id):
 @login_required
 def tasks_detail(request, task_id):
   task = Task.objects.get(id=task_id)
+  bidding_form = BiddingForm()
   return render(request,'tasks/detail.html',{
-    'task': task
+    'task': task, 
+    'bidding_form': bidding_form
   })
 
 class TasksCreate(LoginRequiredMixin, CreateView):

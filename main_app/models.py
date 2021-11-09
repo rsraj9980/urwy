@@ -36,4 +36,4 @@ class Bid(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.amount
+        return f"{self.amount}"

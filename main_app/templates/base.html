@@ -21,7 +21,6 @@
                 </ul>
                 <ul class="right">
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'home' %}">About</a></li>
                     <li><a href="{% url 'index' %}">All Tasks</a></li>
                     <li><a href="{% url 'my_tasks' %}">My Tasks</a></li>
                     <li><a href="{% url 'tasks_create' %}">Create Task</a></li>
