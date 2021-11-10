@@ -12,6 +12,7 @@ urlpatterns = [
     path('tasks/<int:pk>/update/', views.TasksUpdate.as_view(), name='tasks_update'),
     path('tasks/<int:pk>/delete/', views.TasksDelete.as_view(), name='tasks_delete'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('categories/create/', views.CategoriesCreate.as_view(), name='categories_create'),
 
 ]
 
