@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Task, Bid
+from .models import Category, Task, Bid
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -15,7 +15,7 @@ def home(request):
 
 @login_required
 def tasks_index(request):
-  tasks = Task.objects.all()
+  tasks = Task.objects.exclude(user=request.user)
   return render(request, 'tasks/index.html',{'tasks': tasks}) 
 
 @login_required
@@ -26,10 +26,16 @@ def my_tasks(request):
 @login_required
 def bids_detail(request, task_id):
   task = Task.objects.get(id=task_id)
+  max_bid = Bid.objects.filter(task_id=task_id).order_by('amount').first()
+  if max_bid:
+    max_bid = max_bid.amount - 1
+  else:
+    max_bid = task.budget
   bidding_form = BiddingForm()
   return render(request,'tasks/bid.html',{
     'task': task,
     'bidding_form': bidding_form,
+    'max_bid': max_bid
   })
 
 
@@ -44,7 +50,7 @@ def tasks_detail(request, task_id):
 
 class TasksCreate(LoginRequiredMixin, CreateView):
   model = Task
-  fields = ['title', 'desc', 'endDate', 'budget'] #ask instructors about to auto generate today's date
+  fields = ['title', 'desc', 'endDate', 'budget', 'categories'] #ask instructors about to auto generate today's date
 
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -53,11 +59,15 @@ class TasksCreate(LoginRequiredMixin, CreateView):
 
 class TasksUpdate(UpdateView,LoginRequiredMixin):
   model = Task
-  fields = ['desc', 'endDate' ,'budget']
+  fields = ['desc', 'endDate' ,'budget','categories']
 
 class TasksDelete(DeleteView,LoginRequiredMixin):
   model = Task
   success_url = '/tasks/'
+
+class CategoriesCreate(CreateView,LoginRequiredMixin):
+  model = Category
+  fields = '__all__'
 
 
 @login_required

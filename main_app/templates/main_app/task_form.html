@@ -1,30 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
-
-    <h1>Add Task</h1>
-  <!-- Leaving the action empty makes the form post to the same url used to display it -->
-  <form action="" method="post">
+<h1>Create Task</h1>
+<!-- Leaving the action empty makes the form post to the same url used to display it -->
+<form action="" method="post">
     <!-- Django requires the following for security purposes -->
     {% csrf_token %}
     <table>
-      <!-- Render the inputs inside of <tr>s & <td>s -->
-      <!-- form is an instance of a ModelForm class -->
-      {{ form.as_table }}
+        <!-- Render the inputs inside of <tr>s & <td>s -->
+        <!-- form is an instance of a ModelForm class -->
+        {{ form.as_table }}
     </table>
     <input type="submit" value="Submit!" class="btn">
-  </form>
-
-  <script>
-  
+</form>
+<br><br><br>
+<a href="{% url 'categories_create' %}">
+    <input type="submit" value="Create Category" class="btn" href="{% url 'categories_create' %}">
+</a>
+<script>
     const dateEl = document.getElementById('id_endDate');
     M.Datepicker.init(dateEl, {
-      format: 'yyyy-mm-dd',
-      defaultDate: new Date(),
-      setDefaultDate: true,
-      autoClose: true
+        format: 'yyyy-mm-dd',
+        defaultDate: new Date(),
+        setDefaultDate: true,
+        autoClose: true
     });
-  
-  </script>
+
+    const selectEl = document.getElementById('id_categories');
+    M.FormSelect.init(selectEl);
+</script>
 
 {% endblock %}
