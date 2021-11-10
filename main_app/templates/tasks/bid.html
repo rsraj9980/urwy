@@ -13,20 +13,39 @@
                 <p>End Date: {{ task.endDate }}</p>
             </div>
         </div>
+        <hr>
+        <div class="row">
+            <div class="col s6">
+                <h3>Categories</h3>
+                {% for category in task.categories.all %}
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">
+                <span> {{ category.name }}</span> {{ category.difficulty }}
+                        </span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Available toys will come after this line -->
+        </div>
         <div class="card">
             <table class="striped">
                 <thead>
-                  <tr><th>Date</th><th>Amount</th></tr>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
                 </thead>
                 <tbody>
-                  {% for bid in task.bid_set.all %}
+                    {% for bid in task.bid_set.all %}
                     <tr>
-                      <td>{{bid.date}}</td>
-                      <td>${{bid.amount}}</td>
+                        <td>{{bid.date}}</td>
+                        <td>${{bid.amount}}</td>
                     </tr>
-                  {% endfor %}
+                    {% endfor %}
                 </tbody>
-              </table>
+            </table>
         </div>
         <h2>Bids</h2>
         <div class="card">
@@ -37,4 +56,8 @@
         </div>
     </div>
 </div>
+<script>
+    const input = document.getElementById('id_amount');
+    input.setAttribute('max', {{max_bid}});
+</script>
 {% endblock %}

@@ -4,10 +4,20 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
+DIFFICULTY = (
+  ('E', 'Easy'),
+  ('I', 'Intermediate'),
+  ('H', 'Hard')
+)
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    difficulty = models.IntegerField(1-5)
+    difficulty = models.CharField(
+        'difficulty selection',
+        max_length=1,
+        choices=DIFFICULTY,
+        default=DIFFICULTY[0][0]
+    )
 
     def __str__(self):
         return self.name
