@@ -10,10 +10,12 @@
         <!-- form is an instance of a ModelForm class -->
         {{ form.as_table }}
     </table>
-    <input type="submit" value="Submit!" class="btn">
+    <div class="task-submit">
+        <input type="submit" value="Submit!" class="btn">
+    </div>
 </form>
 <br><br><br>
-<a href="{% url 'categories_create' %}">
+<a id="add-category-button" href="{% url 'categories_create' %}">
     <input type="submit" value="Create Category" class="btn" href="{% url 'categories_create' %}">
 </a>
 <script>

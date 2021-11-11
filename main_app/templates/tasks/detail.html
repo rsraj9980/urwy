@@ -3,7 +3,6 @@
 <h1>Task Details</h1>
 
 <div class="row">
-    <div class="col s6">
         <div class="card">
             <div class="card-content">
                 <span class="card-title">{{ task.title }}</span>
@@ -12,27 +11,24 @@
                 <p>Create Date: {{ task.createDate }}</p>
                 <p>End Date: {{ task.endDate }}</p>
                 <div class="card-action">
-                    <a href="{% url 'tasks_update' task.id %}">Edit</a>
-                    <a href="{% url 'tasks_delete' task.id %}">Delete</a>
+                    <a class=" btn" href="{% url 'tasks_update' task.id %}">Edit</a>
+                    <a class=" btn red"href="{% url 'tasks_delete' task.id %}">Delete</a>
                 </div>
             </div>
         </div>
-    </div>
 </div>
 <hr>
 <div class="row">
-    <div class="col s6">
         <h3>Categories</h3>
         {% for category in task.categories.all %}
         <div class="card">
             <div class="card-content">
                 <span class="card-title">
-                <span> {{ category.name }}</span> {{ category.get_difficulty_display }}
+                <span> {{ category.name }}</span> | {{ category.get_difficulty_display }}
                 </span>
             </div>
         </div>
         {% endfor %}
-    </div>
     <!-- Available toys will come after this line -->
 </div>
 {% endblock %}
