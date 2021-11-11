@@ -51,7 +51,9 @@
         <div class="card">
             <form action="{% url 'add_bid' task.id %}" method="POST">
                 {% csrf_token %} {{ bidding_form.as_p }}
-                <input type="submit" class="btn" value="Add Bid">
+                <div class="btn-center">
+                    <input type="submit" class="btn" value="Add Bid">
+                </div>
             </form>
         </div>
         <br><br>

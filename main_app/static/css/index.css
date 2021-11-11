@@ -89,6 +89,11 @@ h1, h3 {
     justify-content: center;
 }
 
+.btn-center {
+    display: flex;
+    justify-content: center;
+}
+
 @media only screen and (max-width: 1024px) {
     #home-page {
         display: grid;
@@ -153,6 +158,10 @@ h1, h3 {
         justify-content: center;
     }    
     h1, h3 {
+        display: flex;
+        justify-content: center;
+    }
+    .btn-center {
         display: flex;
         justify-content: center;
     }
