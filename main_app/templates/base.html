@@ -8,30 +8,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UrWy</title>
+    <link rel="shortcut icon" type="image/jpg" href="https://i.imgur.com/Y2Y9C5Y.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </head>
 
 <body>
     <header class="navbar-fixed">
-        <nav>
-            <div>
-                <ul>
-                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;UrWy</a></li>
-                </ul>
-                <ul class="right">
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'index' %}">All Tasks</a></li>
-                    <li><a href="{% url 'my_tasks' %}">My Tasks</a></li>
-                    <li><a href="{% url 'tasks_create' %}">Create Task</a></li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
-                    {% else %}
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
-                    {% endif %}
-                </ul>
-            </div>
+        <ul id="dropdown1" class="dropdown-content">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'index' %}">All Tasks</a></li>
+            <li><a href="{% url 'my_tasks' %}">My Tasks</a></li>
+            <li><a href="{% url 'tasks_create' %}">Create Task</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+        </ul>
+        <nav id="main-nav">
+            <img id="nav-logo" src="https://i.imgur.com/Y2Y9C5Y.png" alt="">  
+            <a class="dropdown-trigger" href="#!" data-target="dropdown1">Menu<i class="material-icons left"></i></a>
         </nav>
     </header>
     <main class="container">
@@ -41,5 +41,14 @@
         <div class="right">All Rights Reserved, &copy; 2021 UrWy &nbsp;</div>
     </footer>
 </body>
-
+<script>
+  $(document).ready(function () {
+ 
+ $('.dropdown-trigger').dropdown({
+   constrainWidth:false,
+ }); 
+ 
+ 
+ });
+</script>
 </html>

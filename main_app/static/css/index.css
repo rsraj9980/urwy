@@ -3,22 +3,77 @@ body {
 }
 
 #home-page {
-    background-color:  #C0E8F9;
-    text-align: center;
+    display: grid;
+    grid-template-rows: 20vh 50vh 7vh 7vh;
+    justify-content: center;
+    grid-gap: 20px;
+    background-image: linear-gradient(to bottom right, #345B63, #D4ECDD);
     background-size: cover;
     background-repeat: no-repeat;
 }
+#laptop-img{
+    width: 80vh;
+    height: auto;
+    animation: bounce 1s ;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#logo{
+    display: flex;
+    justify-self: center;
+    width: 20vh;
+    margin-top: 20px;
+    height: auto;
+}
+#slogan{
+    width: 10vh;
+    height: auto;
+}
+@keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-50px); } }
 
-#home-page a {
-    margin: 5vmin;
+.card-content{
+    background-image: linear-gradient(to bottom right, #345B63, #D4ECDD);
+    color: white;
+    box-shadow: 4px 4px 4px  black;
+}
+#main-nav{
+    display: grid;
+    grid-template-columns: 14fr 1fr;
+}
+#nav-logo {
+    display: flex;
+    align-self: center;
+    margin-left: 10px;
+    width: 8vh;
+    height: auto;
+}
+.card-action{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.btn{
+    box-shadow: 2px 3px 3px  black;
+    margin: 10px;
+}
+.card-title{
+    text-align: center;
+
+}
+#add-category-button{
+    display: grid;
+    justify-content: center;
+}
+.task-submit{
+    display: grid;
+    justify-content: center;
 }
 
 nav {
-    background-color:  #C0E8F9;
+    background-color:  #345B63;
 }
 
 .page-footer {
-    background-color:  #C0E8F9;
+    background-color:  #345B63;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -29,13 +84,68 @@ nav {
     height: 2rem;
 }
 
-@media only screen and (max-width: 375px) {
+
+@media only screen and (max-width: 1024px) {
     #home-page {
-        background-image: url('https://i.imgur.com/zNPQrU9.png');
-        background-color: #C0E8F9; 
-        background-size: contain;
+        display: grid;
+        grid-template-rows: 20vh 30vh 7vh 7vh;
+        justify-content: center;
+        grid-gap: 20px;
+        background-image: linear-gradient(to bottom right, #345B63, #D4ECDD);
+        background-size: cover;
         background-repeat: no-repeat;
-        background-position-y: 18px;
-        margin-top: 70vh;
+    }
+    #laptop-img{
+        width: 43vh;
+        height: auto;
+        animation: bounce 1s ;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+    #logo{
+        width: 10vh;
+        height: auto;
+    }
+    #slogan{
+        width: 10vh;
+        height: auto;
+    }
+    @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-50px); } }
+
+    .card-content{
+        background-image: linear-gradient(to bottom right, #345B63, #D4ECDD);
+        color: white;
+        box-shadow: 4px 4px 4px  black;
+    }
+    #main-nav{
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+    }
+    #nav-logo {
+        display: flex;
+        align-self: center;
+        margin-left: 10px;
+        width: 8vh;
+        height: auto;
+    }
+    .card-action{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .btn{
+        box-shadow: 2px 3px 3px  black;
+        margin: 10px;
+    }
+    .card-title{
+        text-align: center;
+
+    }
+    #add-category-button{
+        display: grid;
+        justify-content: center;
+    }
+    .task-submit{
+        display: grid;
+        justify-content: center;
     }
 }
