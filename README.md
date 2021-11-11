@@ -1,44 +1,49 @@
 # UrWy
 
-### __Doing things your way... That's our way!__
+![UrWy](https://i.imgur.com/NhwrRZa.jpg)
 
-UrWy is a freelance bidding platform, used to connect those in need of a service with specialists of what needs to be done. The service is posted on the platform in the form of a Task, which in turn leads the user to a page to bid into the oppurtunity to perform the Task for a bidded amount.
+UrWy is a freelance bidding platform, used to connect those in need of a service with specialists of what needs to be done. The service is posted to the platform as a Task. Each Task has a detail page where a user can bid for the opportunity to perform the Task for an amount the user submits.
 
-All users will have access to the general posted Tasks page, the bidding page for the given Task, a page to view any Tasks they have posted to the general Tasks page, a page to create a given Task & a page to create a category of specialty for the Task.
+All users will have access to the "All Tasks" page for viewing all posted Tasks, the bidding page for the given Task, the "My Tasks" page for view any of their created Tasks, the "Create Task" page for creating a Task, and the "Create Category" page for creating a specialized category for a Task.
 
-The general Tasks page will list each of the Tasks that have been posted to the platform. Users will only be able to view the Tasks which were posted by others, so not to bid on any of their own.  
+The "All Tasks" page will only allow users to view Tasks posted by others, so that they can not bid on a task they created. 
 
-The bidding page will allow a user to cast their bid for the chance to give service to another user, with the lowest bid winning the opportunity. Each of the bids will also be posted to the page as well.
+The Task bidding page will allow a user to cast their bid for the chance to provide service to the user who posted the Task, with the lowest bid winning the opportunity. Each of the bids will also be posted to the page as well.
 
 On the user's "My Tasks" page, they will be able to view each of their created Tasks, as well as being able to edit & delete the information for them as well.
 
-The "Create Task" page will allow the user to create & post a new post for others to bid upon. There is also a button on the page to take the user to the "Create Category" page, if the specialized category can not be referenced for creating the Task.
+The "Create Task" page will allow the user to create & post a new Task for others to bid on. There is also a button on the page to take the user to the "Create Category" page, if the specialized category can not initially be referenced for creating the Task.
 
 ### __Screenshots__
-![UrWy Landing Page]()
-##### UrWy Landing Page
+![UrWy Landing Page - Desktop](https://i.imgur.com/SVXH263.png)
+##### UrWy Landing Page - Desktop
 
-![UrWy All Tasks Page]()
+![UrWy Landing Page - Mobile](https://i.imgur.com/s4gcs0q.png)
+##### UrWy Landing Page - Mobile
+
+![UrWy All Tasks Page](https://i.imgur.com/cnIgujH.png)
 ##### UrWy All Tasks Page
 
-![UrWy Task Bidding Page]()
+![UrWy Task Bidding Page](https://i.imgur.com/PUch4k2.png)
 ##### UrWy Task Bidding Page
 
-![UrWy User Created Tasks Page]()
-##### UrWy User Created Tasks Page
+![UrWy My Tasks Page](https://i.imgur.com/rvt1C6n.png)
+##### UrWy My Tasks Page
 
-![UrWy Create Task Page]()
+![UrWy Create Task Page](https://i.imgur.com/ms9mhzj.png)
 ##### UrWy Create Task Page
 
-![UrWy Create Category Page]()
+![UrWy Create Category Page](https://i.imgur.com/FapNMeh.png)
 ##### UrWy Create Category Page
 
 
 ### __Technologies Used__
-* Python
+* CSS
 * Django
-* Materialize
 * Heroku
+* HTML
+* Materialize
+* Python
 
 
 ### __Getting Started__
@@ -52,3 +57,6 @@ Please click into the below hyperlink to access our UrWy Trello board:
 ### __Further Enhancements (Icebox)__
 * Adding Search by Task functionality
 * Posting messages on the bidding page
+* Displaying user avatar for accounts
+* Posting reviews for users
+* Adding money transfer API for Task payment (ex. Stripe)
