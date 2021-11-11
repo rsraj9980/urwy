@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Task List</h1>
+<h1>All Tasks</h1>
 
 {% for task in tasks %}
 <a href="{% url 'bids_detail' task.id %}">

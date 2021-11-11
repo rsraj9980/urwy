@@ -84,6 +84,10 @@ nav {
     height: 2rem;
 }
 
+h1, h3 {
+    display: flex;
+    justify-content: center;
+}
 
 @media only screen and (max-width: 1024px) {
     #home-page {
@@ -111,7 +115,7 @@ nav {
         height: auto;
     }
     @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-50px); } }
-
+    
     .card-content{
         background-image: linear-gradient(to bottom right, #345B63, #D4ECDD);
         color: white;
@@ -138,7 +142,7 @@ nav {
     }
     .card-title{
         text-align: center;
-
+        
     }
     #add-category-button{
         display: grid;
@@ -146,6 +150,10 @@ nav {
     }
     .task-submit{
         display: grid;
+        justify-content: center;
+    }    
+    h1, h3 {
+        display: flex;
         justify-content: center;
     }
 }
